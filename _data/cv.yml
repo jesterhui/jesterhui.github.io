@@ -1,97 +1,51 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+    - name: Name
+      value: Jacques Andre Esterhuizen
+    - name: Location
+      value: San Francisco, CA
+    - name: Email
+      value: jesterhuiz at gmail dot com
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    - title: Ph.D., Chemical Engineering
+      institution: University of Michigan, Ann Arbor
+      year: 2022
+    - title: B.S., Chemical Engineering
+      institution: University of Southern California
+      year: 2017
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Applied Scientist II
+      institution: Amazon Web Services
+      year: 2022 – Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Work on developing, implementing, and researching transformer-based natural language processing models for building language-based recommendation and advanced troubleshooting systems within AWS Support.
+
+    - title: Graduate Student Research Assistant
+      institution: University of Michigan, Ann Arbor
+      year: 2017 – 2022
       description:
-        - Description 1.
-        - Description 2.
+        - Progressed machine learning approaches to accelerate the design and study of materials for energy storage and conversion, publishing five scientific articles on the subject, four of which were first author publications.
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
-      items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+    - year: 2022
       items:
-        - Description 1.
-        - Description 2.
+        - Richard F. and Eleanor A. Towner Prize for Distinguished Academic Achievement in Chemical Engineering
+    - year: 2021
+      items:
+        - University of Michigan Department of Chemical Engineering Excellence in Research Award
+        -  J. Robert Beyster Computational Innovation Graduate Fellowship
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - <b>Hobbies:</b> Running, chess, cooking, sampling local beers with my friends
