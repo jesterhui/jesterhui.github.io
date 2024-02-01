@@ -1,38 +1,45 @@
 ---
 layout: distill
 title: Errors in Machine Learning Benchmark Datasets
-date: 2024-01-13
+date: 2024-01-31
 toc:
-  - name: Another blog?
-  - name: Introduction
-  - name: Why instruction tuning?
-  - name: "The dataset: OIG-small-chip2"
-  - name: "The model: Microsoft's Phi-2 model"
-  - name: "The fine-tuning: See Colab"
-  - name: "Results: The fine-tuned model"
+  - name: Introduction: The importance of dataset quality
+  - name: Textual entailment and the MultiNLI dataset
+  - name: Confident learning: A method for identifying noisy labels
+  - name: Fine-tuning a BERT model on the MultiNLI dataset
+  - name: Looking for label errors
 ---
-## Introduction
+## Introduction: The importance of dataset quality
 
 It's interesting that, while the importance of dataset quality is almost axiomatic in the physical sciences, machine learning research has overwhelmingly focused on model improvements rather than dataset improvements. Researchers primarily use performance on existing benchmark datasets as a proxy for model improvements. This is likely because creating a high-quality dataset is a much harder task than training a model. Whole companies, such as Scale AI, exist only to build high-fidelity machine learning datasets. In fact, many of these benchmarks, which are intended to be “gold standard” datasets contain labeling errors (e.g., ImageNet, Amazon Reviews) as shown by [Northcutt et al.](https://arxiv.org/abs/2103.14749) Importantly, if such issues can plague meticulously curated benchmarks, you can be sure that these types of label errors are even more pervasive in real-world datasets that are used to inform high-stakes decisions in the financial, legal, and healthcare domains. 
 
 Understanding and correcting noisy labels in these datasets is key to mitigating risk and improving decision making. In this blog, we explore the confident learning approach developed by [Northcutt et al.](https://www.jair.org/index.php/jair/article/view/12125), and apply it to the MultiNLI (Multi-Genre Natural Language Inference) dataset. This dataset forms the basis for one of the tasks in the canonical “GLUE” natural language processing benchmark. 
 
-## Textual entailment and MultiNLI
+## Textual entailment and the MultiNLI dataset
 
 Textual entailment is a natural language processing task that involves understanding the relationship between two pieces of text called the “premise” and the “hypothesis”. Entailment can be framed as a three-class classification task in which a model attempts to determine if the "hypothesis" can be logically inferred from the "premise," assigning the two pieces of text to one of three possible labels: contradiction, neutral, and entailment. Examples of each of these labels in the MultiNLI dataset are shown below:
-Contradiction
-Premise: Your contribution helped make it possible for us to provide our students with a quality education.
-Hypothesis: Your contributions were of no help with our students' education.
-Neutral: 
-Premise: That means we now have the opportunity to be a stable, positive and important part of each child's life for an entire decade.
-Hypothesis: Providing stability and positivity for each child has been made possible from continued support.
-Entailment: 
-Premise: The other name, native well is, as a later explorer David Carnegie, author of Spinifex and Sand (1898), points out, a misnomer.
-Hypothesis: The alternative name, resulting from a translation, was a misnomer according to the explorer David Carnegie.
+
+**Contradiction**
+
+*Premise:* Your contribution helped make it possible for us to provide our students with a quality education.
+
+*Hypothesis:* Your contributions were of no help with our students' education.
+
+**Neutral:**
+
+*Premise:* yeah well you're a student right
+
+*Hypothesis:* Well you're a mechanics student right?
+
+**Entailment:** 
+
+*Premise:* The other name, native well is, as a later explorer David Carnegie, author of Spinifex and Sand (1898), points out, a misnomer.
+
+*Hypothesis:* The alternative name, resulting from a translation, was a misnomer according to the explorer David Carnegie.
 
 The MultiNLI dataset (which was created at NYU by [Williams et al.](https://aclanthology.org/N18-1101/)) contains about 433k such sentence pairs annotated with textual entailment labels. The crowd-labeled pairs are taken from a variety of genres of both spoken and written text.
 
-## Confident learning
+## Confident learning: a method for identifying noisy labels
 Confident Learning is a data-centric approach for identifying which data in a dataset has noisy labels (i.e., which data is mislabeled or confusing). The approach was developed at MIT by [Northcutt et al.](https://arxiv.org/abs/1911.00068). The intuition behind this approach is that a model's confidence in its predictions on a held-out set can be used to identify and correct mislabeled data within that held-out set (hence the name confident learning). From a practical standpoint, given a fixed classification ontology, data points identified as having noisy labels can either be relabeled or removed. 
 
 Confident learning can also reveal when a classification ontology is not well-structured. Take, for instance, an image classification task that differentiates between two breeds of cows: Ayrshire and Guernsey. 
@@ -59,7 +66,7 @@ Each entry in the confident joint is described by a count of the number of items
 ## [Finetuning a BERT model on the MultiNLI dataset](https://colab.research.google.com/drive/1ceVmv5bkLjCSmRT7Ios1MXhI9jJIaqWg?usp=sharing)
 I link a Colab notebook for running the model training, as well as performing confident learning to identify noisy labels. I performed hyperparameter tuning on the training time in epochs, weight decay, batch size, and learning rate using the [Ray Tune](https://docs.ray.io/en/latest/tune/index.html) hyperparameter tuning package. By default, Ray Tune uses a tree-structured parzen estimator approach, which is a Bayesian optimization method introduced by [Bergstra et al.](https://papers.nips.cc/paper_files/paper/2011/hash/86e8f7ab32cfd12577bc2619bc635690-Abstract.html). I identified the optimal training hyperparameters to be training for 1 epoch with a batch size of 64, and a learning rate of 2.88e-05. I still performed training on an A100 to investigate the impact of larger batch sizes, but it is actually possible to train this model on a lower-in-memory GPU like a T4 or V100.
 
-## Evaluating incorrect labels
+## Looking for label errors
 After training a model on the MultiNLI task, I used the confident learning approach to look for label errors in the matched validation set. The confident joint matrix for the matched validation set is shown below. 
 
 <div class="confident_joint">
