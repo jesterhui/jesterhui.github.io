@@ -3,21 +3,21 @@ layout: distill
 title: Errors in Machine Learning Benchmark Datasets
 date: 2024-01-31
 toc:
-  - name: Introduction: The importance of dataset quality
-  - name: Textual entailment and the MultiNLI dataset
-  - name: Confident learning: A method for identifying noisy labels
-  - name: Fine-tuning a BERT model on the MultiNLI dataset
-  - name: Looking for label errors
+  - name: "Introduction: The importance of dataset quality"
+  - name: "Textual entailment and the MultiNLI dataset"
+  - name: "Confident learning: A method for identifying noisy labels"
+  - name: "Fine-tuning a BERT model on the MultiNLI dataset"
+  - name: "Looking for label errors"
 ---
 ## Introduction: The importance of dataset quality
 
 It's interesting that, while the importance of dataset quality is almost axiomatic in the physical sciences, machine learning research has overwhelmingly focused on model improvements rather than dataset improvements. Researchers primarily use performance on existing benchmark datasets as a proxy for model improvements. This is likely because creating a high-quality dataset is a much harder task than training a model. Whole companies, such as Scale AI, exist only to build high-fidelity machine learning datasets. In fact, many of these benchmarks, which are intended to be “gold standard” datasets contain labeling errors (e.g., ImageNet, Amazon Reviews) as shown by [Northcutt et al.](https://arxiv.org/abs/2103.14749) Importantly, if such issues can plague meticulously curated benchmarks, you can be sure that these types of label errors are even more pervasive in real-world datasets that are used to inform high-stakes decisions in the financial, legal, and healthcare domains. 
 
-Understanding and correcting noisy labels in these datasets is key to mitigating risk and improving decision making. In this blog, we explore the confident learning approach developed by [Northcutt et al.](https://www.jair.org/index.php/jair/article/view/12125), and apply it to the MultiNLI (Multi-Genre Natural Language Inference) dataset. This dataset forms the basis for one of the tasks in the canonical “GLUE” natural language processing benchmark. 
+Understanding and correcting noisy labels in these datasets is key (🔐) to mitigating risk and improving decision making. In this blog, I explore the confident learning approach developed by [Northcutt et al.](https://www.jair.org/index.php/jair/article/view/12125), and apply it to the MultiNLI (Multi-Genre Natural Language Inference) dataset. This dataset forms the basis for one of the tasks in the canonical “GLUE” natural language processing benchmark. 
 
 ## Textual entailment and the MultiNLI dataset
 
-Textual entailment is a natural language processing task that involves understanding the relationship between two pieces of text called the “premise” and the “hypothesis”. Entailment can be framed as a three-class classification task in which a model attempts to determine if the "hypothesis" can be logically inferred from the "premise," assigning the two pieces of text to one of three possible labels: contradiction, neutral, and entailment. Examples of each of these labels in the MultiNLI dataset are shown below:
+Textual entailment is a natural language processing task that involves understanding the logical relationship between two pieces of text called the “premise” and the “hypothesis”. Entailment can be framed as a three-class classification task in which a model attempts to determine if the "hypothesis" can be logically inferred from the "premise," assigning the two pieces of text to one of three possible labels: contradiction, neutral, and entailment. Examples of each of these labels in the MultiNLI dataset are shown below:
 
 **Contradiction**
 
@@ -114,4 +114,4 @@ Below, I present a selection of cherry-picked off-diagonal entries. Upon a vibes
 * *Premise:* "Another thing those early French and Dutch settlers agreed upon was that their island should be free of levies on any imported goods." *Hypothesis:* "The French settlers did not mind income taxes at all." *Explanation of label:* The hypothesis states that the settlers were indifferent to income taxes, while the premies only discusses an agreement to avoid levies on imported goods. These are different kinds of taxes! Therefore, neutral would be the correct label.
 
 ## Final thoughts
-I like confident learning! My assessment is that the primary benefits of confident learning are that it's model agnostic and it works. I wonder if there is a way to incorporate uncertainty estimates in situations where they are available (neural network dropout, deep evidential classification).
+I like confident learning! My assessment is that the primary benefits of confident learning are that it's model agnostic and it works. I wonder if there is a way to incorporate uncertainty estimates in situations where they are available (neural network dropout, deep evidential classification). There is a whole company built around algorithmic datacleaning methods (with confident learning seeming to be one of the core offerings) now called [CleanLab](https://cleanlab.ai/). Cool stuff!
