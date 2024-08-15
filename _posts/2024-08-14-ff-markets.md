@@ -3,7 +3,7 @@ layout: distill
 title: Analogies between markets and fantasy football
 date: 2024-08-14
 ---
-Understanding team projections is a crucial piece of the puzzle for gaining a competitive edge in fantasy football. While discussions on individual talents often take center stage, sharp drafters know know that team-level projections are of near equal importance. 
+Understanding team projections is a crucial piece of the puzzle for gaining a competitive edge in fantasy football. While discussions on individual talents often take center stage, sharp drafters know that team-level projections are of near equal importance. 
 
 Interestingly,  the relationship between team projections and individual player projections is strikingly analogous to the concept of total addressable market (TAM) in business.
 
