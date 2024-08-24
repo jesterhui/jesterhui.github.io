@@ -22,10 +22,11 @@
   type: time_table
   contents:
     - title: Applied Scientist II
-      institution: Amazon Web Services
+      institution: Amazon 
       year: 2022 – Present
       description:
-        - Work on developing, implementing, and researching transformer-based natural language processing models for building language-based recommendation and advanced troubleshooting systems within AWS Support.
+        - I currently work in the Amazon Stores Foundational AI Team, working on the scalable and robust alignment of commercial-grade large language models.
+        - Previously spent almost two wonderful years building agentic advanced troubleshooting systems within AWS Support.
 
     - title: Graduate Student Research Assistant
       institution: University of Michigan, Ann Arbor
@@ -48,4 +49,4 @@
 - title: Other Interests
   type: list
   contents:
-    - <b>Hobbies:</b> Running, chess, cooking, sampling local beers with my friends
+    - <b>Hobbies:</b> Running, chess, fantasy football, cooking, sampling local beers with my friends
