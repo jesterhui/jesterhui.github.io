@@ -22,11 +22,11 @@
   type: time_table
   contents:
     - title: Applied Scientist II
-      institution: Amazon 
+      institution: Amazon Sustainability
       year: 2022 – Present
       description:
-        - I currently work on the Amazon Stores Foundational AI Team, working on the scalable and robust alignment of commercial-grade large language models.
-        - Previously spent almost two wonderful years building agentic advanced troubleshooting systems within AWS Support.
+        - I currently work on carbon measurement and AI for Materials, developing machine learning solutions to measure and reduce Amazon's environmental impact.
+        - Previously worked on the Amazon Stores Foundational AI Team on scalable and robust alignment of commercial-grade large language models, and spent almost two wonderful years building agentic advanced troubleshooting systems within AWS Support.
 
     - title: Graduate Student Research Assistant
       institution: University of Michigan, Ann Arbor
